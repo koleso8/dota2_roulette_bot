@@ -15,11 +15,9 @@ bot.command('play', (ctx) => {
 
 bot.on('callback_query', (ctx) => {
     if (ctx.callbackQuery.game_short_name === 'd2r') {
-        ctx.answerCallbackQuery({
-            url: 'https://dota2-roulette.vercel.app/',
-        });
+        ctx.telegram.answerGameQuery(ctx.callbackQuery.id, 'https://dota2-roulette.vercel.app/');
     } else {
-        ctx.answerCallbackQuery();
+        ctx.answerCbQuery();
     }
 });
 
