@@ -1,0 +1,13 @@
+{
+  "name": "dota2_roulette_bot",
+  "version": "1.0.0",
+  "main": "telegram-bot.js",
+  "type": "module",
+  "scripts": {
+    "start": "node telegram-bot.js"
+  },
+  "dependencies": {
+    "telegraf": "^4.16.2",
+    "dotenv": "^16.0.3"
+  }
+}
