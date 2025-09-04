@@ -9,19 +9,20 @@ if (!BOT_TOKEN) {
 
 const bot = new Telegraf(BOT_TOKEN);
 
+// Кнопка для WebApp (откроет вашу игру внутри Telegram)
 bot.command('play', (ctx) => {
-    ctx.replyWithGame('dota2r');
-});
-
-bot.on('callback_query', (ctx) => {
-    if (ctx.callbackQuery.game_short_name === 'dota2r') {
-        ctx.telegram.answerGameQuery(ctx.callbackQuery.id, 'https://dota2-roulette.vercel.app/');
-    } else {
-        ctx.answerCbQuery();
-    }
+    ctx.reply('Открыть игру', {
+        reply_markup: {
+            keyboard: [
+                [{ text: 'Играть', web_app: { url: 'https://dota2-roulette.vercel.app/' } }]
+            ],
+            resize_keyboard: true,
+            one_time_keyboard: true,
+        },
+    });
 });
 
 bot.launch();
 
 process.once('SIGINT', () => bot.stop('SIGINT'));
-process.once('SIGTERM', () => bot.stop('SIGTERM'));
+process.once('SIGTERM', () => bot.stop('SIGTERM')); 
