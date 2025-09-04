@@ -10,11 +10,11 @@ if (!BOT_TOKEN) {
 const bot = new Telegraf(BOT_TOKEN);
 
 bot.command('play', (ctx) => {
-    ctx.replyWithGame('d2r');
+    ctx.replyWithGame('dota2r');
 });
 
 bot.on('callback_query', (ctx) => {
-    if (ctx.callbackQuery.game_short_name === 'd2r') {
+    if (ctx.callbackQuery.game_short_name === 'dota2r') {
         ctx.telegram.answerGameQuery(ctx.callbackQuery.id, 'https://dota2-roulette.vercel.app/');
     } else {
         ctx.answerCbQuery();
